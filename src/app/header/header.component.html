@@ -1,0 +1,88 @@
+<!-- <div class="container-fluid fixed-top bg-primary check-contrast">
+  <div class="row">
+    <div class="col-xl-9 col-lg-11 container-alt mx-auto">
+      <nav class="navbar navbar-expand-xl navbar-dark toggles-ignore text-light py-1" id="topnav">
+        <a class="navbar-brand ng-binding" href="#">Nome do projeto</a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target=".navbar-dual" aria-expanded="false">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse navbar-dual collapse">
+          <div class="navbar-nav small text-uppercase ml-auto">
+            <a class="nav-link font-weight-bold" href="#" title="Current breakpoint tier">
+              <i class="lnr lnr-user"></i>
+              Olá Gabriel
+            </a>
+            <a class="nav-link" href="#" title="Current breakpoint tier">
+              <i class="lnr lnr-alarm"></i>
+              Notifications
+            </a>
+            <a class="nav-link" href="#">
+              <i class="lnr lnr-cog"></i>
+              Configurações
+            </a>
+            <a class="nav-link" href="#modalAbout" data-toggle="modal">
+              <i class="lnr lnr-exit"></i>
+              Sair
+            </a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <div class="row ng-hide" *ngIf="false">
+    <div class="col-12">
+      <div class="progress px-0 rounded-0">
+        <div class="progress-bar progress-bar-striped progress-bar-animated w-100" role="progressbar"></div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+
+<div class="container-fluid fixed-top bg-primary check-contrast">
+  <div class="row">
+    <div class="col-xl-9 col-lg-11 container-alt mx-auto">
+      <nav class="navbar navbar-expand-xl navbar-dark toggles-ignore text-light px-0 py-1" id="topnav">
+        <a class="navbar-brand ng-binding" href="#">Nome do projeto</a>
+        <button class="navbar-toggler" 
+          [ngClass]="{'collapsed': !showNavbar}" 
+          (click)="showNavbar = !showNavbar"
+          type="button" 
+          data-toggle="collapse" 
+          data-target=".navbar-dual" 
+          aria-expanded="false">
+          <i class="navbar-toggler-icon"></i>
+        </button>
+        <div class="navbar-collapse navbar-dual collapse" [ngClass]="{'show': showNavbar}">
+          <div class="navbar-nav small text-uppercase ml-auto">
+            <a class="nav-link font-weight-bold" href="#" title="Current breakpoint tier">
+              <i class="lnr lnr-user"></i>
+              Olá Gabriel
+            </a>
+            <a class="nav-link" href="#" title="Current breakpoint tier">
+              <i class="lnr lnr-alarm"></i>
+              Notifications
+            </a>
+            <a class="nav-link" href="#">
+              <i class="lnr lnr-cog"></i>
+              Configurações
+            </a>
+            <a class="nav-link" href="#modalAbout" data-toggle="modal">
+              <i class="lnr lnr-exit"></i>
+              Sair
+            </a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <div class="row ng-hide" *ngIf="false">
+    <div class="col-12">
+      <div class="progress px-0 rounded-0">
+        <div class="progress-bar progress-bar-striped progress-bar-animated w-100" role="progressbar"></div>
+      </div>
+    </div>
+  </div>
+</div>
