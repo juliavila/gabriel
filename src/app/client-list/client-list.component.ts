@@ -10,6 +10,7 @@ export class ClientListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    // window.print();
   }
 
 }
