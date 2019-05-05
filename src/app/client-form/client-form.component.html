@@ -1,0 +1,57 @@
+<form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+  
+  <div class="form-group">
+    <label>First Name:</label>
+    <input class="form-control" type="text" formControlName="firstName" required>
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+
+  <div class="form-group">
+    <label>Last Name:</label>
+    <input class="form-control" type="text" formControlName="lastName">
+  </div>
+
+  <div formGroupName="address">
+    <h3>Address</h3>
+    
+    <div class="form-group">
+      <label>Street:</label>
+      <input class="form-control" type="text" formControlName="street">
+    </div>
+    
+    <div class="form-group">
+      <label>City:</label>
+      <input class="form-control" type="text" formControlName="city">
+    </div>
+
+    <div class="form-group">
+      <label>State:</label>
+      <input class="form-control" type="text" formControlName="state">
+    </div>
+    
+    <div class="form-group">
+      <label>Zip Code:</label>
+      <input class="form-control" type="text" formControlName="zip">
+    </div>
+  </div>
+
+  <div formArrayName="aliases">
+    <h3>Aliases</h3> 
+    
+    <button class="btn btn-primary" (click)="addAlias()">Add Alias</button>
+    
+    <div *ngFor="let address of aliases.controls; let i=index">
+      <!-- The repeated alias template -->
+      <div class="form-group">
+        <label>Alias:</label>
+        <input class="form-control" type="text" [formControlName]="i">
+      </div>
+    </div>
+  </div>
+
+  <button class="btn btn-primary" type="submit" [disabled]="!clientForm.valid">Submit</button>
+</form>
+
+<p>
+  Form Status: {{ clientForm.status }}
+</p>
