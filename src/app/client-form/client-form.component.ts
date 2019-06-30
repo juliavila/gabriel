@@ -1,43 +1,111 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder,  Validators,  FormArray } from '@angular/forms';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-client-form',
   templateUrl: './client-form.component.html',
   styleUrls: ['./client-form.component.css']
 })
-export class ClientFormComponent implements OnInit {
+export class ClientFormComponent implements OnInit, OnDestroy {
 
   clientForm = this.fb.group({
-    firstName: ['', Validators.required],
-    lastName: [''],
-    address: this.fb.group({
-      street: [''],
-      city: [''],
-      state: [''],
-      zip: ['']
+    razaoSocial: ['', Validators.required],
+    nomeFantasia: [''],
+    endereco: this.fb.group({
+      logradouro: [''],
+      cidade: [''],
+      estado: [''],
+      cep: ['']
     }),
-    aliases: this.fb.array([
+    responsaveis: this.fb.array([
+      this.fb.control('')
+    ]),
+    telefones: this.fb.array([
+      this.fb.control('')
+    ]),
+    emails: this.fb.array([
       this.fb.control('')
     ])
   });
 
-  constructor(private fb: FormBuilder) { }
+  id: string;
+  subscription: Subscription;
+
+  constructor(
+    private fb: FormBuilder,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    this.subscription = this.route.queryParams.subscribe(this.resolveQueryParams);
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  resolveQueryParams(params: Params) {
+    console.log(params);
+    this.id = params['id'];
   }
   
   onSubmit() {
-    // TODO: Use EventEmitter with form value
     console.log(this.clientForm.value);
   }
 
-  get aliases() {
-    return this.clientForm.get('aliases') as FormArray;
+  /** Responsáveis */ 
+
+  get responsaveis() {
+    return this.clientForm.get('responsaveis') as FormArray;
   }
 
-  addAlias() {
-    this.aliases.push(this.fb.control(''));
+  addResponsavel() {
+    this.responsaveis.push(this.fb.control(''));
+  }
+
+  removeResponsavel(index: number) {
+    console.log('index', index);
+    this.responsaveis.removeAt(index);
+  }
+
+  /** Telefones */ 
+
+  get telefones() {
+    return this.clientForm.get('telefones') as FormArray;
+  }
+
+  addTelefone() {
+    this.telefones.push(this.fb.control(''));
+  }
+
+  removeTelefone(index: number) {
+    console.log('index', index);
+    this.telefones.removeAt(index);
+  }
+
+  /** E-mails */
+
+  get emails() {
+    return this.clientForm.get('emails') as FormArray;
+  }
+
+  addEmail() {
+    this.emails.push(this.fb.control(''));
+  }
+
+  removeEmail(index: number) {
+    console.log('index', index);
+    this.emails.removeAt(index);
+  }
+
+  showInput(index, formArray) {
+    return index === (formArray.controls.length - 1);
+  }
+
+  seeEmails() {
+    console.log(this.emails)
   }
 
 }
