@@ -2,137 +2,13 @@
 
   <div class="col-md-8 order-md-1">
 
-    <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
-
-      <h3>Dados Básicos</h3> 
-
-      <div class="form-group">
-        <label>Razão Social</label>
-        <input class="form-control" type="text" formControlName="razaoSocial" required>
-      </div>
-
-      <div class="form-group">
-        <label>Nome Fantasia</label>
-        <input class="form-control" type="text" formControlName="nomeFantasia" required>
-      </div>
-
-      <div formArrayName="responsaveis" class="form-group">
-        <label>Responsáveis</label> 
-        <ng-container *ngFor="let responsavel of responsaveis.controls; let i=index">
-        
-          <div *ngIf="showInput(i, responsaveis)" class="input-group mb-3">
-            <input class="form-control" type="text" [formControlName]="i">
-            <div class="input-group-append">
-              <button type="submit" class="btn btn-success" (click)="addResponsavel(i)">adicionar</button>
-            </div>
-          </div>
-
-          <div *ngIf="!showInput(i, responsaveis)" class="input-group mb-3">
-            <p class="form-control" type="text">{{responsavel.value}}</p>
-            <div class="input-group-append">
-              <button type="submit" class="btn btn-danger" (click)="removeResponsavel(i)">
-                <i class="lnr lnr-trash"></i>
-              </button>
-            </div>
-          </div>
-
-        </ng-container>
-      </div>
-
-      <div formArrayName="telefones" class="form-group">
-        <label>Telefones</label> 
-        <ng-container *ngFor="let telefone of telefones.controls; let i=index">
-        
-          <div *ngIf="showInput(i, telefones)" class="input-group mb-3">
-            <input class="form-control" type="text" [formControlName]="i">
-            <div class="input-group-append">
-              <button type="submit" class="btn btn-success" (click)="addTelefone(i)">adicionar</button>
-            </div>
-          </div>
-
-          <div *ngIf="!showInput(i, telefones)" class="input-group mb-3">
-            <p class="form-control" type="text">{{telefone.value}}</p>
-            <div class="input-group-append">
-              <button type="submit" class="btn btn-danger" (click)="removeTelefone(i)">
-                <i class="lnr lnr-trash"></i>
-              </button>
-            </div>
-          </div>
-
-        </ng-container>
-      </div>
-
-      <div formArrayName="emails" class="form-group">
-        <label>E-mails</label> 
-        <ng-container *ngFor="let email of emails.controls; let i=index">
-        
-          <div *ngIf="showInput(i, emails)" class="input-group mb-3">
-            <input class="form-control" type="text" [formControlName]="i">
-            <div class="input-group-append">
-              <button type="submit" class="btn btn-success" (click)="addEmail(i)">adicionar</button>
-            </div>
-          </div>
-
-          <div *ngIf="!showInput(i, emails)" class="input-group mb-3">
-            <p class="form-control" type="text">{{email.value}}</p>
-            <div class="input-group-append">
-              <button type="submit" class="btn btn-danger" (click)="removeEmail(i)">
-                <i class="lnr lnr-trash"></i>
-              </button>
-            </div>
-          </div>
-
-        </ng-container>
-      </div>
-
-      <div formGroupName="endereco">
-        <h3>Endereço</h3>
-
-        <div class="form-group">
-          <label>CEP</label>
-          <input class="form-control" type="text" formControlName="cep">
-        </div>
-        
-        <div class="form-group">
-          <label>Logradouro</label>
-          <input class="form-control" type="text" formControlName="logradouro">
-        </div>
-
-        <div class="form-group">
-          <label>Cidade</label>
-          <input class="form-control" type="text" formControlName="cidade">
-        </div>
-
-        <div class="form-group">
-          <label>Estado</label>
-          <input class="form-control" type="text" formControlName="estado">
-        </div>
-        
-      </div>
-
-      <div class="row">
-        <button class="btn btn-primary col-md-4 btn-lg ml-3" type="submit" [disabled]="!clientForm.valid">Salvar</button>
-        <button class="btn btn-secondary btn-lg ml-3" type="button" >Cancelar</button>
-      </div>
-
-    </form>
-
-    <p>
-      Form Status: {{ clientForm.status }}
-    </p>
+    <app-client-form-basic-data></app-client-form-basic-data>
 
   </div>
 
   <div class="col-md-4 order-md-2 mb-4">
 
-    <h3>Notas</h3> 
-
-    <div class="form-group">
-      <label></label>
-      <textarea class="form-control" type="text"></textarea>
-    </div>
-
-    <button class="btn btn-primary col-md-12">Adicionar</button>
+    <app-notes></app-notes>
 
   </div>
 

@@ -1,0 +1,142 @@
+<div class="row">
+
+    <span class="badge badge-primary mr-2">Primary</span>
+    <span class="badge badge-secondary mr-2">Secondary</span>
+    <span class="badge badge-success mr-2">Success</span>
+    <span class="badge badge-danger mr-2">Danger</span>
+    <span class="badge badge-warning mr-2">Warning</span>
+    <span class="badge badge-info mr-2">Info</span>
+    <span class="badge badge-light mr-2">Light</span>
+    <span class="badge badge-dark mr-2">Dark</span>
+</div>
+
+<form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+
+  <h3>Dados Básicos</h3> 
+
+  <div class="form-group">
+    <label>Razão Social</label>
+    <input class="form-control" type="text" formControlName="razaoSocial" required>
+  </div>
+
+  <div class="form-group">
+    <label>Nome Fantasia</label>
+    <input class="form-control" type="text" formControlName="nomeFantasia" required>
+  </div>
+
+  <div formArrayName="responsaveis" class="form-group">
+    <label>Responsáveis</label> 
+    <ng-container *ngFor="let responsavel of responsaveis.controls; let i=index">
+    
+      <div *ngIf="showInput(i, responsaveis)" class="input-group mb-3">
+        <input class="form-control" type="text" [formControlName]="i">
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-success" (click)="addResponsavel(i)">adicionar</button>
+        </div>
+      </div>
+
+      <div *ngIf="!showInput(i, responsaveis)" class="input-group mb-3">
+        <p class="form-control" type="text">{{responsavel.value}}</p>
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-danger" (click)="removeResponsavel(i)">
+            <i class="lnr lnr-trash"></i>
+          </button>
+        </div>
+      </div>
+
+    </ng-container>
+  </div>
+
+  <div formArrayName="telefones" class="form-group">
+    <label>Telefones</label> 
+    <ng-container *ngFor="let telefone of telefones.controls; let i=index">
+    
+      <div *ngIf="showInput(i, telefones)" class="input-group mb-3">
+        <input class="form-control" type="text" [formControlName]="i">
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-success" (click)="addTelefone(i)">adicionar</button>
+        </div>
+      </div>
+
+      <div *ngIf="!showInput(i, telefones)" class="input-group mb-3">
+        <p class="form-control" type="text">{{telefone.value}}</p>
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-danger" (click)="removeTelefone(i)">
+            <i class="lnr lnr-trash"></i>
+          </button>
+        </div>
+      </div>
+
+    </ng-container>
+  </div>
+
+  <div formArrayName="emails" class="form-group">
+    <label>E-mails</label> 
+    <ng-container *ngFor="let email of emails.controls; let i=index">
+    
+      <div *ngIf="showInput(i, emails)" class="input-group mb-3">
+        <input class="form-control" type="text" [formControlName]="i">
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-success" (click)="addEmail(i)">adicionar</button>
+        </div>
+      </div>
+
+      <div *ngIf="!showInput(i, emails)" class="input-group mb-3">
+        <p class="form-control" type="text">{{email.value}}</p>
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-danger" (click)="removeEmail(i)">
+            <i class="lnr lnr-trash"></i>
+          </button>
+        </div>
+      </div>
+
+    </ng-container>
+  </div>
+
+  <div formGroupName="endereco">
+    <h3>Endereço</h3>
+
+    <div class="form-group">
+      <label>CEP</label>
+      <input class="form-control" type="text" formControlName="cep">
+    </div>
+
+    <div class="row">
+
+      <div class="form-group col-md-8 col-lg-10">
+        <label>Logradouro</label>
+        <input class="form-control" type="text" formControlName="logradouro">
+      </div>
+  
+      <div class="form-group col-md-4 col-lg-2">
+        <label>Número</label>
+        <input class="form-control" type="text" formControlName="numero">
+      </div>
+
+    </div>
+    
+
+    <div class="form-group">
+      <label>Cidade</label>
+      <input class="form-control" type="text" formControlName="cidade">
+    </div>
+
+    <div class="form-group">
+      <label>Estado</label>
+      <input class="form-control" type="text" formControlName="estado">
+    </div>
+    
+  </div>
+
+  <hr class="mb-4">
+
+  <button class="btn btn-primary btn-lg btn-block" type="submit" [disabled]="!clientForm.valid">Salvar</button>
+  <a href="#" class="btn btn-secondary mt-3">
+    <i class="lnr lnr-chevron-left small"></i> Cancelar
+  </a>
+
+</form>
+
+<p>
+  Form Status: {{ clientForm.status }}
+</p>

@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { ClientListComponent } from './client-list/client-list.component';
 import { HeaderComponent } from './header/header.component';
 import { ClientFormComponent } from './client-form/client-form.component';
+import { NotesComponent } from './notes/notes.component';
+import { ClientFormBasicDataComponent } from './client-form-basic-data/client-form-basic-data.component';
 
 const appRoutes: Routes = [
   // { path: 'crisis-center', component: CrisisListComponent },
@@ -30,7 +32,9 @@ const appRoutes: Routes = [
     AppComponent,
     ClientListComponent,
     HeaderComponent,
-    ClientFormComponent
+    ClientFormComponent,
+    NotesComponent,
+    ClientFormBasicDataComponent
   ],
   imports: [
     RouterModule.forRoot(
