@@ -1,0 +1,5 @@
+@import "./../tag.css";
+
+.tag input.tag-value {
+  border-color: var(--cyan);
+}

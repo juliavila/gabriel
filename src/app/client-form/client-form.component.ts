@@ -6,4 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./client-form.component.css']
 })
 export class ClientFormComponent {
+
+  removeTag(event) {
+    console.log('remove', event);
+  }
+
+  addTag(event) {
+    console.log(event);
+  }
 }

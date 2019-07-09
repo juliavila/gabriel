@@ -1,0 +1,8 @@
+<div class="input-group input-group-sm tag">
+  <span type="text" class="form-control text-white tag-value" disabled>{{value}}</span>
+  <div *ngIf="removable" class="input-group-append">
+    <button type="submit" class="btn btn-sm" (click)="remove.emit(value)">
+      <i class="lnr lnr-cross font-weight-bolder text-white"></i>
+    </button>
+  </div>
+</div>

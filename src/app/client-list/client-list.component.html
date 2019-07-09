@@ -1,103 +1,92 @@
-<div class="mb-3 mx-2">
+<div class="mb-3 row">
 
-  <div class="d-flex justify-content-between align-items-start flex-wrap">
-    
-    
-    <div class="col-md-8 col-lg-6 col-xl-4">
-      
-      <label for="filter" class="text-uppercase small">Palavras-chave:</label>
-      <div class="d-flex">
-        <input class="form-control mr-2" type="text" name="filter" placeholder="Nome, Cidade, etc">
-        <button class="btn bg-primary text-white"><span class="lnr lnr-magnifier"></span></button>
+  <div class="col-12 col-md-6">
+
+    <label for="filter" class="text-uppercase small">Palavras-chave:</label>
+
+    <div class="input-group">
+
+      <input class="form-control" type="text" name="filter" placeholder="Nome, Cidade, etc">
+      <div class="input-group-append">
+        <button type="submit" class="btn btn-primary">
+          <i class="lnr lnr-magnifier font-weight-bolder text-white"></i>
+        </button>
       </div>
-    
-      <label for="ordenar-por" class="text-uppercase small">Ordenar por:</label>
-      <select class="form-control" name="ordenar-por">
-        <!-- <option value="visita-crescente">Visita mais próxima</option>
-        <option value="visita-decrescente">Visita mais distante</option> -->
-        <option value="nome-az">Razão Social A-Z</option>
-        <option value="nome-za">Razão Social Z-A</option>
-        <option value="nome-az">Nome Fantasia A-Z</option>
-        <option value="nome-za">Nome Fantasia Z-A</option>
-      </select>
-  
-    </div>
 
-    <div class="col mt-3 d-flex flex-md-row-reverse">
-      <button class="btn bg-primary text-white" (click)="print()">Imprimir <span class="lnr lnr-printer"></span></button>
     </div>
 
   </div>
+  <div class="col-12 col-md-auto">
 
-  <!-- <div>
-    <label for="situacao" class="text-uppercase small">Situação:</label>
-    <select class="form-control" name="situacao">
-      <option value="todos">todas</option>
-      <option value="prospecção">prospecção</option>
-      <option value="em-andamento">em andamento</option>
-      <option value="concluido">concluído</option>
-      <option value="inativo">Nome Ciente Z-A</option>
+    <label for="ordenar-por" class="text-uppercase small">Ordenar por:</label>
+    <select class="form-control" name="ordenar-por">
+      <!-- <option value="visita-crescente">Visita mais próxima</option>
+        <option value="visita-decrescente">Visita mais distante</option> -->
+      <option value="nome-az">Razão Social A-Z</option>
+      <option value="nome-za">Razão Social Z-A</option>
+      <option value="nome-az">Nome Fantasia A-Z</option>
+      <option value="nome-za">Nome Fantasia Z-A</option>
     </select>
-  </div> -->
-  
+
+  </div>
+
+  <div class="col mt-3 d-flex flex-md-row-reverse">
+    <div>
+      <button class="btn btn-lg bg-primary text-white" (click)="print()">
+        <i class="lnr lnr-printer"></i>
+      </button>
+    </div>
+  </div>
+
 </div>
 
 
 <ul class="list-group">
-  <li>
-    <a routerLink="/form" [queryParams]="{id: '123abc'}" class="list-group-item list-group-item-action d-flex flex-row align-items-start justify-content-between">
-      <div>
-        <span class="small">NOME FANTASIA</span>
-        <h5 class="text-primary mb-2">Razão Social </h5>
-        <p class="card-text">Maria Eduarda, Maria Luiza, Maria Clara</p>
-      </div>
-      <!-- <div class="text-right">
+  <li class="list-group-item list-group-item-action d-flex flex-row align-items-start justify-content-between"
+    (click)="openClient('000')">
+    <div>
+      <span class=" small">NOME FANTASIA</span>
+      <h5 class="text-primary mb-2">Razão Social </h5>
+      <p class="card-text">Maria Eduarda, Maria Luiza, Maria Clara</p>
+    </div>
+    <!-- <div class="text-right">
         <p class="small text-uppercase mb-0">Próxima visita:</p>
         <p class="text-nowrap">04.04.2018 | 13:30</p>
         <small class="badge badge-warning small">prospecção</small>
       </div> -->
-    </a>
   </li>
 
-  <li>
-    <a routerLink="/form" [queryParams]="{id: '123abc'}" class="list-group-item list-group-item-action d-flex flex-row align-items-start justify-content-between">
-      <div>
-        <span class="small">NOME FANTASIA</span>
-        <h5 class="text-primary mb-2">Cliente XXXXXX </h5>
-        <p class="card-text">Maria Eduarda, Maria Luiza, Maria Clara</p>
-      </div>
-      <!-- <div class="text-right">
-        <p class="small text-uppercase mb-0">Próxima visita:</p>
-        <p class="text-nowrap">04.04.2018 | 13:30</p>
-        <small class="badge badge-success small">ativo</small>
-      </div> -->
-    </a>
+  <li class="list-group-item list-group-item-action d-flex flex-row align-items-start justify-content-between"
+    (click)="openClient('aaaaaa')">
+    <div>
+      <span class="small">NOME FANTASIA</span>
+      <h5 class="text-primary mb-2">Cliente XXXXXX </h5>
+      <p class="card-text">Maria Eduarda, Maria Luiza, Maria Clara</p>
+    </div>
+    <div class="text-right">
+      <p class="small text-uppercase mb-0">Próxima visita:</p>
+      <p class="text-nowrap">04.04.2018 | 13:30</p>
+      <small class="badge badge-success small">ativo</small>
+    </div>
   </li>
 
-  <li>
-    <a routerLink="/form" [queryParams]="{id: '123abc'}" class="list-group-item list-group-item-action d-flex flex-row align-items-start justify-content-between">
-      <div>
-        <span class="small">NOME FANTASIA</span>
-        <h5 class="text-primary mb-2">Cliente XXXXXX </h5>
-        <p class="card-text">Maria Eduarda, Maria Luiza, Maria Clara</p>
-      </div>
-      <!-- <div class="text-right">
-        <small class="badge badge-primary small">concluído</small>
-      </div> -->
-    </a>
+  <li class="list-group-item list-group-item-action d-flex flex-row align-items-start justify-content-between"
+    (click)="openClient('b')">
+    <div>
+      <span class="small">NOME FANTASIA</span>
+      <h5 class="text-primary mb-2">Cliente XXXXXX </h5>
+      <p class="card-text">Maria Eduarda, Maria Luiza, Maria Clara</p>
+    </div>
   </li>
 
-  <li>
-    <a routerLink="/form" [queryParams]="{id: '123abc'}" class="list-group-item list-group-item-action d-flex flex-row align-items-start justify-content-between">
-      <div>
-        <span class="small">NOME FANTASIA</span>
-        <h5 class="text-secondary mb-2">Cliente XXXXXX </h5>
-        <p class="card-text">Maria Eduarda, Maria Luiza, Maria Clara</p>
-      </div>
-      <!-- <div class="text-right">
-        <small class="badge badge-secondary small">inativo</small>
-      </div> -->
-    </a>
+
+  <li class="list-group-item list-group-item-action d-flex flex-row align-items-start justify-content-between"
+    (click)="openClient('jl')">
+    <div>
+      <span class="small">NOME FANTASIA</span>
+      <h5 class="text-secondary mb-2">Cliente XXXXXX </h5>
+      <p class="card-text">Maria Eduarda, Maria Luiza, Maria Clara</p>
+    </div>
   </li>
 
 </ul>

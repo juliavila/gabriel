@@ -9,6 +9,8 @@ import { HeaderComponent } from './header/header.component';
 import { ClientFormComponent } from './client-form/client-form.component';
 import { NotesComponent } from './notes/notes.component';
 import { ClientFormBasicDataComponent } from './client-form-basic-data/client-form-basic-data.component';
+import { InputTagComponent } from './tag/input-tag/input-tag.component';
+import { DisplayTagComponent } from './tag/display-tag/display-tag.component';
 
 const appRoutes: Routes = [
   // { path: 'crisis-center', component: CrisisListComponent },
@@ -19,7 +21,8 @@ const appRoutes: Routes = [
     component: ClientListComponent,
     data: { title: 'home List' }
   },
-  { path: '',
+  {
+    path: '',
     redirectTo: '/home',
     pathMatch: 'full'
   },
@@ -34,7 +37,9 @@ const appRoutes: Routes = [
     HeaderComponent,
     ClientFormComponent,
     NotesComponent,
-    ClientFormBasicDataComponent
+    ClientFormBasicDataComponent,
+    InputTagComponent,
+    DisplayTagComponent
   ],
   imports: [
     RouterModule.forRoot(

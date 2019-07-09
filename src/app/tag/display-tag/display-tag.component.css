@@ -1,0 +1,6 @@
+@import "./../tag.css";
+
+.tag span.tag-value {
+  background: var(--cyan);
+  border-color: var(--cyan);
+}

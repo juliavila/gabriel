@@ -48,15 +48,14 @@ export class ClientFormBasicDataComponent implements OnInit, OnDestroy {
   }
 
   resolveQueryParams(params: Params) {
-    console.log(params);
-    this.id = params['id'];
+    this.id = params.id;
   }
-  
+
   onSubmit() {
     console.log(this.clientForm.value);
   }
 
-  /** Responsáveis */ 
+  /** Responsáveis */
 
   get responsaveis() {
     return this.clientForm.get('responsaveis') as FormArray;
@@ -71,7 +70,7 @@ export class ClientFormBasicDataComponent implements OnInit, OnDestroy {
     this.responsaveis.removeAt(index);
   }
 
-  /** Telefones */ 
+  /** Telefones */
 
   get telefones() {
     return this.clientForm.get('telefones') as FormArray;
